@@ -1,8 +1,8 @@
-# Microchip/Atmel ATSAM4SD32C PAC for Rust
+# Microchip/Atmel ATSAM4S8B PAC for Rust
 
-This repository holds the Peripheral Access Crate for the Atmel `ATSAM4SD32C` microcontroller.
+This repository holds the Peripheral Access Crate for the Atmel `ATSAM4S8B` microcontroller.
 
-[![Build Status](https://www.travis-ci.com/atsam4-rs/atsam4sd32c-pac.svg?branch=master)](https://www.travis-ci.com/atsam4-rs/atsam4sd32c-pac)
+[![Build Status](https://github.com/haata/atsam4s8b-pac/workflows/Rust/badge.svg)](https://github.com/haata/atsam4s8b-pac/actions)
 
 This **P**eripheral **A**ccess **C**rates (**PAC**s) is automatically generated, and provides low-level access to the peripherals specified by a device's SVD file.
 

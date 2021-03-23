@@ -10,13 +10,65 @@ impl crate::ResetValue for super::CLK {
         0
     }
 }
+#[doc = "CLKA Divide Factor\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
+pub enum DIVA_A {
+    #[doc = "0: CLKA clock is turned off"]
+    CLKA_POFF = 0,
+    #[doc = "1: CLKA clock is clock selected by PREA"]
+    PREA = 1,
+}
+impl From<DIVA_A> for u8 {
+    #[inline(always)]
+    fn from(variant: DIVA_A) -> Self {
+        variant as _
+    }
+}
 #[doc = "Reader of field `DIVA`"]
-pub type DIVA_R = crate::R<u8, u8>;
+pub type DIVA_R = crate::R<u8, DIVA_A>;
+impl DIVA_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, DIVA_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(DIVA_A::CLKA_POFF),
+            1 => Val(DIVA_A::PREA),
+            i => Res(i),
+        }
+    }
+    #[doc = "Checks if the value of the field is `CLKA_POFF`"]
+    #[inline(always)]
+    pub fn is_clka_poff(&self) -> bool {
+        *self == DIVA_A::CLKA_POFF
+    }
+    #[doc = "Checks if the value of the field is `PREA`"]
+    #[inline(always)]
+    pub fn is_prea(&self) -> bool {
+        *self == DIVA_A::PREA
+    }
+}
 #[doc = "Write proxy for field `DIVA`"]
 pub struct DIVA_W<'a> {
     w: &'a mut W,
 }
 impl<'a> DIVA_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: DIVA_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
+    #[doc = "CLKA clock is turned off"]
+    #[inline(always)]
+    pub fn clka_poff(self) -> &'a mut W {
+        self.variant(DIVA_A::CLKA_POFF)
+    }
+    #[doc = "CLKA clock is clock selected by PREA"]
+    #[inline(always)]
+    pub fn prea(self) -> &'a mut W {
+        self.variant(DIVA_A::PREA)
+    }
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
@@ -207,13 +259,65 @@ impl<'a> PREA_W<'a> {
         self.w
     }
 }
+#[doc = "CLKB Divide Factor\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
+pub enum DIVB_A {
+    #[doc = "0: CLKB clock is turned off"]
+    CLKB_POFF = 0,
+    #[doc = "1: CLKB clock is clock selected by PREB"]
+    PREB = 1,
+}
+impl From<DIVB_A> for u8 {
+    #[inline(always)]
+    fn from(variant: DIVB_A) -> Self {
+        variant as _
+    }
+}
 #[doc = "Reader of field `DIVB`"]
-pub type DIVB_R = crate::R<u8, u8>;
+pub type DIVB_R = crate::R<u8, DIVB_A>;
+impl DIVB_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, DIVB_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(DIVB_A::CLKB_POFF),
+            1 => Val(DIVB_A::PREB),
+            i => Res(i),
+        }
+    }
+    #[doc = "Checks if the value of the field is `CLKB_POFF`"]
+    #[inline(always)]
+    pub fn is_clkb_poff(&self) -> bool {
+        *self == DIVB_A::CLKB_POFF
+    }
+    #[doc = "Checks if the value of the field is `PREB`"]
+    #[inline(always)]
+    pub fn is_preb(&self) -> bool {
+        *self == DIVB_A::PREB
+    }
+}
 #[doc = "Write proxy for field `DIVB`"]
 pub struct DIVB_W<'a> {
     w: &'a mut W,
 }
 impl<'a> DIVB_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: DIVB_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
+    #[doc = "CLKB clock is turned off"]
+    #[inline(always)]
+    pub fn clkb_poff(self) -> &'a mut W {
+        self.variant(DIVB_A::CLKB_POFF)
+    }
+    #[doc = "CLKB clock is clock selected by PREB"]
+    #[inline(always)]
+    pub fn preb(self) -> &'a mut W {
+        self.variant(DIVB_A::PREB)
+    }
     #[doc = r"Writes raw bits to the field"]
     #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {

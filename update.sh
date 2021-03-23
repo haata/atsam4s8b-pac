@@ -11,7 +11,7 @@ cargo install --force --version 0.7.0 form
 
 TOP="${PWD}"
 
-xsl=svd/devices/atsam4sd32c.xsl
+xsl=svd/devices/atsam4s8b.xsl
 chip=$(basename "${xsl}" .xsl)
 CHIP=$(echo "${chip}" | tr '[:lower:]' '[:upper:]')
 svd=svd/${CHIP}.svd

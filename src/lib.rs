@@ -1,4 +1,4 @@
-#![doc = "Peripheral access API for ATSAM4SD32C microcontrollers (generated using svd2rust v0.17.0)\n\nYou can find an overview of the API [here].\n\n[here]: https://docs.rs/svd2rust/0.17.0/svd2rust/#peripheral-api"]
+#![doc = "Peripheral access API for ATSAM4S8B microcontrollers (generated using svd2rust v0.17.0)\n\nYou can find an overview of the API [here].\n\n[here]: https://docs.rs/svd2rust/0.17.0/svd2rust/#peripheral-api"]
 #![deny(const_err)]
 #![deny(dead_code)]
 #![deny(improper_ctypes)]
@@ -30,12 +30,10 @@ pub const NVIC_PRIO_BITS: u8 = 4;
 extern "C" {
     fn PMC();
     fn EFC0();
-    fn EFC1();
     fn UART0();
     fn UART1();
     fn PIOA();
     fn PIOB();
-    fn PIOC();
     fn USART0();
     fn USART1();
     fn HSMCI();
@@ -46,9 +44,6 @@ extern "C" {
     fn TC0();
     fn TC1();
     fn TC2();
-    fn TC3();
-    fn TC4();
-    fn TC5();
     fn ADC();
     fn DACC();
     fn PWM();
@@ -73,13 +68,13 @@ pub static __INTERRUPTS: [Vector; 35] = [
     Vector { _reserved: 0 },
     Vector { _handler: PMC },
     Vector { _handler: EFC0 },
-    Vector { _handler: EFC1 },
+    Vector { _reserved: 0 },
     Vector { _handler: UART0 },
     Vector { _handler: UART1 },
     Vector { _reserved: 0 },
     Vector { _handler: PIOA },
     Vector { _handler: PIOB },
-    Vector { _handler: PIOC },
+    Vector { _reserved: 0 },
     Vector { _handler: USART0 },
     Vector { _handler: USART1 },
     Vector { _reserved: 0 },
@@ -92,9 +87,9 @@ pub static __INTERRUPTS: [Vector; 35] = [
     Vector { _handler: TC0 },
     Vector { _handler: TC1 },
     Vector { _handler: TC2 },
-    Vector { _handler: TC3 },
-    Vector { _handler: TC4 },
-    Vector { _handler: TC5 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
     Vector { _handler: ADC },
     Vector { _handler: DACC },
     Vector { _handler: PWM },
@@ -110,8 +105,6 @@ pub enum Interrupt {
     PMC = 5,
     #[doc = "6 - EFC0"]
     EFC0 = 6,
-    #[doc = "7 - EFC1"]
-    EFC1 = 7,
     #[doc = "8 - UART0"]
     UART0 = 8,
     #[doc = "9 - UART1"]
@@ -120,8 +113,6 @@ pub enum Interrupt {
     PIOA = 11,
     #[doc = "12 - PIOB"]
     PIOB = 12,
-    #[doc = "13 - PIOC"]
-    PIOC = 13,
     #[doc = "14 - USART0"]
     USART0 = 14,
     #[doc = "15 - USART1"]
@@ -142,12 +133,6 @@ pub enum Interrupt {
     TC1 = 24,
     #[doc = "25 - TC2"]
     TC2 = 25,
-    #[doc = "26 - TC3"]
-    TC3 = 26,
-    #[doc = "27 - TC4"]
-    TC4 = 27,
-    #[doc = "28 - TC5"]
-    TC5 = 28,
     #[doc = "29 - ADC"]
     ADC = 29,
     #[doc = "30 - DACC"]
@@ -261,27 +246,6 @@ impl Deref for TC0 {
 }
 #[doc = "Timer Counter 0"]
 pub mod tc0;
-#[doc = "Timer Counter 1"]
-pub struct TC1 {
-    _marker: PhantomData<*const ()>,
-}
-unsafe impl Send for TC1 {}
-impl TC1 {
-    #[doc = r"Returns a pointer to the register block"]
-    #[inline(always)]
-    pub const fn ptr() -> *const tc1::RegisterBlock {
-        0x4001_4000 as *const _
-    }
-}
-impl Deref for TC1 {
-    type Target = tc1::RegisterBlock;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        unsafe { &*TC1::ptr() }
-    }
-}
-#[doc = "Timer Counter 1"]
-pub mod tc1;
 #[doc = "Two-wire Interface 0"]
 pub struct TWI0 {
     _marker: PhantomData<*const ()>,
@@ -492,48 +456,6 @@ impl Deref for CRCCU {
 }
 #[doc = "Cyclic Redundancy Check Calculation Unit"]
 pub mod crccu;
-#[doc = "Cortex-M Cache Controller"]
-pub struct CMCC {
-    _marker: PhantomData<*const ()>,
-}
-unsafe impl Send for CMCC {}
-impl CMCC {
-    #[doc = r"Returns a pointer to the register block"]
-    #[inline(always)]
-    pub const fn ptr() -> *const cmcc::RegisterBlock {
-        0x4007_c000 as *const _
-    }
-}
-impl Deref for CMCC {
-    type Target = cmcc::RegisterBlock;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        unsafe { &*CMCC::ptr() }
-    }
-}
-#[doc = "Cortex-M Cache Controller"]
-pub mod cmcc;
-#[doc = "Static Memory Controller"]
-pub struct SMC {
-    _marker: PhantomData<*const ()>,
-}
-unsafe impl Send for SMC {}
-impl SMC {
-    #[doc = r"Returns a pointer to the register block"]
-    #[inline(always)]
-    pub const fn ptr() -> *const smc::RegisterBlock {
-        0x400e_0000 as *const _
-    }
-}
-impl Deref for SMC {
-    type Target = smc::RegisterBlock;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        unsafe { &*SMC::ptr() }
-    }
-}
-#[doc = "Static Memory Controller"]
-pub mod smc;
 #[doc = "AHB Bus Matrix"]
 pub struct MATRIX {
     _marker: PhantomData<*const ()>,
@@ -660,27 +582,6 @@ impl Deref for EFC0 {
 }
 #[doc = "Embedded Flash Controller 0"]
 pub mod efc0;
-#[doc = "Embedded Flash Controller 1"]
-pub struct EFC1 {
-    _marker: PhantomData<*const ()>,
-}
-unsafe impl Send for EFC1 {}
-impl EFC1 {
-    #[doc = r"Returns a pointer to the register block"]
-    #[inline(always)]
-    pub const fn ptr() -> *const efc1::RegisterBlock {
-        0x400e_0c00 as *const _
-    }
-}
-impl Deref for EFC1 {
-    type Target = efc1::RegisterBlock;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        unsafe { &*EFC1::ptr() }
-    }
-}
-#[doc = "Embedded Flash Controller 1"]
-pub mod efc1;
 #[doc = "Parallel Input/Output Controller A"]
 pub struct PIOA {
     _marker: PhantomData<*const ()>,
@@ -723,27 +624,6 @@ impl Deref for PIOB {
 }
 #[doc = "Parallel Input/Output Controller B"]
 pub mod piob;
-#[doc = "Parallel Input/Output Controller C"]
-pub struct PIOC {
-    _marker: PhantomData<*const ()>,
-}
-unsafe impl Send for PIOC {}
-impl PIOC {
-    #[doc = r"Returns a pointer to the register block"]
-    #[inline(always)]
-    pub const fn ptr() -> *const pioc::RegisterBlock {
-        0x400e_1200 as *const _
-    }
-}
-impl Deref for PIOC {
-    type Target = pioc::RegisterBlock;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        unsafe { &*PIOC::ptr() }
-    }
-}
-#[doc = "Parallel Input/Output Controller C"]
-pub mod pioc;
 #[doc = "Reset Controller"]
 pub struct RSTC {
     _marker: PhantomData<*const ()>,
@@ -883,8 +763,6 @@ pub struct Peripherals {
     pub SPI: SPI,
     #[doc = "TC0"]
     pub TC0: TC0,
-    #[doc = "TC1"]
-    pub TC1: TC1,
     #[doc = "TWI0"]
     pub TWI0: TWI0,
     #[doc = "TWI1"]
@@ -905,10 +783,6 @@ pub struct Peripherals {
     pub ACC: ACC,
     #[doc = "CRCCU"]
     pub CRCCU: CRCCU,
-    #[doc = "CMCC"]
-    pub CMCC: CMCC,
-    #[doc = "SMC"]
-    pub SMC: SMC,
     #[doc = "MATRIX"]
     pub MATRIX: MATRIX,
     #[doc = "PMC"]
@@ -921,14 +795,10 @@ pub struct Peripherals {
     pub UART1: UART1,
     #[doc = "EFC0"]
     pub EFC0: EFC0,
-    #[doc = "EFC1"]
-    pub EFC1: EFC1,
     #[doc = "PIOA"]
     pub PIOA: PIOA,
     #[doc = "PIOB"]
     pub PIOB: PIOB,
-    #[doc = "PIOC"]
-    pub PIOC: PIOC,
     #[doc = "RSTC"]
     pub RSTC: RSTC,
     #[doc = "SUPC"]
@@ -971,9 +841,6 @@ impl Peripherals {
             TC0: TC0 {
                 _marker: PhantomData,
             },
-            TC1: TC1 {
-                _marker: PhantomData,
-            },
             TWI0: TWI0 {
                 _marker: PhantomData,
             },
@@ -1004,12 +871,6 @@ impl Peripherals {
             CRCCU: CRCCU {
                 _marker: PhantomData,
             },
-            CMCC: CMCC {
-                _marker: PhantomData,
-            },
-            SMC: SMC {
-                _marker: PhantomData,
-            },
             MATRIX: MATRIX {
                 _marker: PhantomData,
             },
@@ -1028,16 +889,10 @@ impl Peripherals {
             EFC0: EFC0 {
                 _marker: PhantomData,
             },
-            EFC1: EFC1 {
-                _marker: PhantomData,
-            },
             PIOA: PIOA {
                 _marker: PhantomData,
             },
             PIOB: PIOB {
-                _marker: PhantomData,
-            },
-            PIOC: PIOC {
                 _marker: PhantomData,
             },
             RSTC: RSTC {
