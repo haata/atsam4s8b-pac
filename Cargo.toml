@@ -5,7 +5,7 @@ description = "Peripheral access crate for ATSAM4S8B microcontrollers"
 keywords = ["arm", "cortex-m", "atsam4s8b", "svd2rust"]
 license = "MIT OR Apache-2.0"
 name = "atsam4s8b-pac"
-repository = "https://github.com/haata/atsam4s8b-pac"
+repository = "https://github.com/atsam4-rs/atsam4s8b-pac"
 version = "0.1.1"
 
 [dependencies]
